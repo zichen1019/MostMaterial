@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zichen.bootstrap.mapper.HousingInformationMapper" >
+  <resultMap id="BaseResultMap" type="com.zichen.bootstrap.base.HousingInformation" >
+    <id column="annalid" property="annalid" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="modifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+    <result column="publisher_contact" property="publisherContact" jdbcType="VARCHAR" />
+    <result column="photo" property="photo" jdbcType="VARCHAR" />
+    <result column="detailed_information" property="detailedInformation" jdbcType="VARCHAR" />
+    <result column="leased_state" property="leasedState" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zichen.bootstrap.base.HousingInformationWithBLOBs" extends="BaseResultMap" >
+    <result column="visitors" property="visitors" jdbcType="LONGVARCHAR" />
+    <result column="like" property="like" jdbcType="LONGVARCHAR" />
+    <result column="comment" property="comment" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    annalid, createDate, modifyDate, title, price, publisher, publisher_contact, photo, detailed_information, leased_state
+  </sql>
+  <sql id="Blob_Column_List" >
+    visitors, like, comment
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from housing_information
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from housing_information
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zichen.bootstrap.base.HousingInformationWithBLOBs" >
+    insert into housing_information (annalid, createDate, modifyDate, 
+      title, price, publisher, photo, publisher_contact,
+      detailed_information, leased_state, visitors, 
+      like, comment)
+    values (#{annalid,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{title,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, #{publisher,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{publisherContact,jdbcType=VARCHAR},
+      #{detailedInformation,jdbcType=VARCHAR}, #{leasedState,jdbcType=BIT}, #{visitors,jdbcType=LONGVARCHAR}, 
+      #{like,jdbcType=LONGVARCHAR}, #{comment,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zichen.bootstrap.base.HousingInformationWithBLOBs" >
+    insert into housing_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="annalid != null" >
+        annalid,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+      <if test="modifydate != null" >
+        modifyDate,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="publisher != null" >
+        publisher,
+      </if>
+      <if test="publisherContact != null">
+        publisher_contact,
+      </if>
+      <if test="photo != null" >
+        photo,
+      </if>
+      <if test="detailedInformation != null" >
+        detailed_information,
+      </if>
+      <if test="leasedState != null" >
+        leased_state,
+      </if>
+      <if test="visitors != null" >
+        visitors,
+      </if>
+      <if test="like != null" >
+        like,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="annalid != null" >
+        #{annalid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherContact != null" >
+        #{publisher_contact,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedInformation != null" >
+        #{detailedInformation,jdbcType=VARCHAR},
+      </if>
+      <if test="leasedState != null" >
+        #{leasedState,jdbcType=BIT},
+      </if>
+      <if test="visitors != null" >
+        #{visitors,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="like != null" >
+        #{like,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zichen.bootstrap.base.HousingInformationWithBLOBs" >
+    update housing_information
+    <set >
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        modifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="publisher != null" >
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherContact != null" >
+        publisher_contact = #{publisherContact,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedInformation != null" >
+        detailed_information = #{detailedInformation,jdbcType=VARCHAR},
+      </if>
+      <if test="leasedState != null" >
+        leased_state = #{leasedState,jdbcType=BIT},
+      </if>
+      <if test="visitors != null" >
+        visitors = #{visitors,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="like != null" >
+        like = #{like,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zichen.bootstrap.base.HousingInformationWithBLOBs" >
+    update housing_information
+    set createDate = #{createdate,jdbcType=TIMESTAMP},
+      modifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      publisher_contact = #{publisherContact,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      detailed_information = #{detailedInformation,jdbcType=VARCHAR},
+      leased_state = #{leasedState,jdbcType=BIT},
+      visitors = #{visitors,jdbcType=LONGVARCHAR},
+      like = #{like,jdbcType=LONGVARCHAR},
+      comment = #{comment,jdbcType=LONGVARCHAR}
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zichen.bootstrap.base.HousingInformation" >
+    update housing_information
+    set createDate = #{createdate,jdbcType=TIMESTAMP},
+      modifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      publisher_contact = #{publisherContact,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      detailed_information = #{detailedInformation,jdbcType=VARCHAR},
+      leased_state = #{leasedState,jdbcType=BIT}
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getList" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from housing_information
+    limit ${start},${end}
+  </select>
+</mapper>

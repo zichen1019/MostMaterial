@@ -1,0 +1,14 @@
+[
+  {"gongNeng":"禁止编辑某列","jieJueFangShi":"1. 类型为text时,不使用editor编辑器",
+    "shiLiDaiMa":"{field:'biaozhunjiage',title:'标准费用',width:60,align:'center'}"},
+  {"gongNeng":"","jieJueFangShi":"2. 类型为combobox时,使用editor编辑器",
+    "shiLiDaiMa": ""},
+  {"gongNeng":"","jieJueFangShi":"",
+    "shiLiDaiMa":""},
+  {"gongNeng":"","jieJueFangShi":"",
+    "shiLiDaiMa":""},
+  {"gongNeng":"","jieJueFangShi":"",
+    "shiLiDaiMa":""},
+  {"gongNeng":"","jieJueFangShi":"",
+    "shiLiDaiMa":""}
+]

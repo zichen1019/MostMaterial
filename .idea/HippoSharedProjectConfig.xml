@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="HippoSharedProjectConfig">
+    <option name="log4JDirectory" value="" />
+    <option name="tomcatDirectory" value="" />
+    <option name="tomcatRootDirectory" value="D:/tomcat/apache-tomcat-7.0.67/bin" />
+    <option name="projectRootDirectory" value="" />
+    <option name="distFile" value="" />
+  </component>
+</project>

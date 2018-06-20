@@ -1,0 +1,1 @@
+package com.zichen.bootstrap.service.impl;import org.springframework.stereotype.Service;import com.zichen.bootstrap.service.CoreService;@Servicepublic class CoreServiceImpl implements CoreService {}
