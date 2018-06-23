@@ -21,8 +21,8 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">渺小的世界</a></li>
-                            <li class="breadcrumb-item active">A small world</li>
+                            <li class="breadcrumb-item"><a href="#">A small world</a></li>
+                            <li class="breadcrumb-item active">渺小的世界</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->

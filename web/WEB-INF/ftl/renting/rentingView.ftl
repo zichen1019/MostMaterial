@@ -18,10 +18,11 @@
                         <h1 class="m-0 text-dark">渺小的世界</h1>
                         <small>A small world</small>
                     </div><!-- /.col -->
+                    <!-- 路径展示 -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">租房</a></li>
-                            <li class="breadcrumb-item active">Renting</li>
+                            <li class="breadcrumb-item"><a href="index">渺小的世界</a></li>
+                            <li class="breadcrumb-item active">租房</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
