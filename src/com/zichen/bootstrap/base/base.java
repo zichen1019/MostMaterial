@@ -6,6 +6,10 @@ public class base {
 
     private int end = 10;
 
+    private String orderby = "annalid";
+
+    private String sort = "desc";
+
     public int getStart() {
         return start;
     }
@@ -20,5 +24,21 @@ public class base {
 
     public void setEnd(int end) {
         this.end = end;
+    }
+
+    public String getOrderby() {
+        return orderby;
+    }
+
+    public void setOrderby(String orderby) {
+        this.orderby = orderby;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 }
