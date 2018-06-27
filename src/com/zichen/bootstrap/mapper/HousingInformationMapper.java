@@ -20,5 +20,5 @@ public interface HousingInformationMapper {
 
     int updateByPrimaryKey(HousingInformation record);
 
-    List<HousingInformation> getList(HousingInformation housingInformation);
+    List<HousingInformation> getList(HousingInformation record);
 }

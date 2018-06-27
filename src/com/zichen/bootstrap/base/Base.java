@@ -1,12 +1,12 @@
 package com.zichen.bootstrap.base;
 
-public class base {
+public class Base {
 
     private int start = 0;
 
     private int end = 10;
 
-    private String orderby = "annalid";
+    private String order = "annalid";
 
     private String sort = "desc";
 
@@ -26,12 +26,12 @@ public class base {
         this.end = end;
     }
 
-    public String getOrderby() {
-        return orderby;
+    public String getOrder() {
+        return order;
     }
 
-    public void setOrderby(String orderby) {
-        this.orderby = orderby;
+    public void setOrder(String order) {
+        this.order = order;
     }
 
     public String getSort() {

@@ -1,7 +1,7 @@
 package com.zichen.bootstrap.controller;
 
+import com.zichen.bootstrap.base.User;
 import com.zichen.bootstrap.base.View;
-import com.zichen.bootstrap.service.CoreService;
 import com.zichen.bootstrap.service.ViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,9 +25,7 @@ import java.io.InputStream;
  */
 @Controller
 public class CoreController {
-	
-	@Autowired
-	private CoreService coreService;
+
 	@Autowired
 	private ViewService viewService;
 
@@ -60,8 +58,11 @@ public class CoreController {
 	@RequestMapping("/view/{viewName}")
 	public ModelAndView view(@PathVariable("viewName") String viewName){
 		View view = viewService.selectByViewName(viewName);
-		return new ModelAndView(view.getViewpath());
+		User user = new User();
+		return new ModelAndView(view.getViewpath()).addObject("user",user);
 	}
+
+
 
 	@RequestMapping(value="/headPortrait")
 	@ResponseBody

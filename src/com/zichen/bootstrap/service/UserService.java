@@ -1,8 +1,11 @@
-package com.zichen.bootstrap.mapper;
+package com.zichen.bootstrap.service;
 
 import com.zichen.bootstrap.base.User;
+import org.springframework.stereotype.Service;
 
-public interface UserMapper {
+@Service
+public interface UserService {
+
     int deleteByPrimaryKey(String annalid);
 
     int insert(User record);
@@ -15,5 +18,5 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    User checkUser(String loginname);
+    User checkUser(User user);
 }

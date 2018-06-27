@@ -3,7 +3,7 @@ package com.zichen.bootstrap.base;
 public class HousingInformationWithBLOBs extends HousingInformation {
     private String visitors;
 
-    private String like;
+    private String likesPeople;
 
     private String comment;
 
@@ -15,12 +15,12 @@ public class HousingInformationWithBLOBs extends HousingInformation {
         this.visitors = visitors == null ? null : visitors.trim();
     }
 
-    public String getLike() {
-        return like;
+    public String getLikesPeople() {
+        return likesPeople;
     }
 
-    public void setLike(String like) {
-        this.like = like == null ? null : like.trim();
+    public void setLikesPeople(String likesPeople) {
+        this.likesPeople = likesPeople == null ? null : likesPeople.trim();
     }
 
     public String getComment() {

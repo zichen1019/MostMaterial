@@ -1,130 +1,135 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Creative - Start Bootstrap Theme</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
-    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
     <style>
-        /*web background*/
-        .container{
-            display:table;
+        .top-offset10 {
+            margin-top: 10px;
+        }
+        .top-offset20 {
+            margin-top: 20px;
+        }
+        .half-width {
+            width: 50%;
         }
 
-        .row{
-            display: table-cell;
-            vertical-align: middle;
-        }
-        /* centered columns styles */
-        .row-centered {
-            text-align:center;
-        }
-        .col-centered {
-            display:inline-block;
-            float:none;
-            text-align:left;
-            margin-right:-4px;
-        }
-        ins{
-            float: left;
-            /* 设置背景颜色，背景图加载过程中会显示背景色 */
-            background-color: #464646;
-            /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
-            background-attachment: fixed;
-            /* 背景图不平铺 */
-            background-repeat: no-repeat;
-            /* 背景图垂直、水平均居中 */
-            background-position: center center;
-            background-size: cover;
-            background-image: url("/images/img/portfolio/fullsize/1.jpg");
-            background-image: url("/images/img/portfolio/fullsize/1.jpg");
-            /*模糊的用法*/
-            /*-webkit-filter: blur(5px);
-            -moz-filter: blur(5px);
-            -o-filter: blur(5px);
-            -ms-filter: blur(5px);
-            filter: blur(5px);*/
-            -moz-filter: blur(5px);
-            -o-filter: blur(5px);
-            -ms-filter: blur(5px);
-            /*
-            grayscale 灰度               值为0-1之间的小数
-            sepia 褐色　　　　　　   值为0-1之间的小数
-            saturate 饱和度　　　　 值为num
-            hue-rotate 色相旋转　　值为angle
-            invert 反色　　　　　　  值为0-1之间的小数
-            opacity 透明度　　　　　值为0-1之间的小数
-            brightness 亮度　　　　 值为0-1之间的小数
-            contrast 对比度　　　　 值为num
-            blur 模糊　　　　　　     值为length
-            drop-shadow 阴影
-            */
-        }
-        form{
-            /*透明度
-                opacity: 0.5;
-            background: #EEE;*/
-            margin-left: 400px;
-            margin-right: 400px;
-            position:absolute;
-        }
     </style>
 </head>
 <body>
 
+<#include "loadding.ftl">
 
-<!--
-    <form action="/login" method="post" role="form">
-        <div class="container">
-            <div class="row row-centered">
-                <div class="well col-lg-4 col-sm-6 col-centered">
-                    <h2>欢迎登录</h2>
-                    <div class="input-group input-group-md">
-                        <span class="input-group-addon" id="sizing-username"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户ID"/>
+<header class="container masthead text-center text-white d-flex" >
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 mx-auto">
+                <form id="login" role="form">
+                    <h2 class="text-uppercase">欢迎登录</h2>
+                    <div class=" input-group input-group-md top-offset20">
+                        <span class="input-group-addon" id="esizing-usernam" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" id="loginname" name="loginname" placeholder="请输入用户ID"/>
                     </div>
-                    <div class="input-group input-group-md">
+                    <div class=" input-group input-group-md top-offset10">
                         <span class="input-group-addon" id="sizing-password"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码"/>
+                        <input type="password" class="form-control" id="loginpssd" name="loginpssd" placeholder="请输入密码"/>
                     </div>
-                    <br/>
-                    <button type="submit" class="btn btn-success btn-block">登录</button>
-                </div>
+                    <div class="top-offset20">
+                        <button id="submit" type="submit" class="btn btn-success half-width col-xs-3">登录</button>
+                        <button class="btn btn-danger half-width col-xs-3">注册</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </form>-->
-
-
-    <div class=" col-lg-4 col-sm-6 ">
-        <h2>欢迎登录</h2>
-        <div class="input-group input-group-md">
-            <span class="input-group-addon" id="sizing-username1"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-            <input type="text" class="form-control" id="username1" name="username" placeholder="请输入用户ID"/>
-        </div>
-        <div class="input-group input-group-md">
-            <span class="input-group-addon" id="sizing-password1"><i class="glyphicon glyphicon-lock"></i></span>
-            <input type="password" class="form-control" id="password1" name="password" placeholder="请输入密码"/>
-        </div>
-        <br/>
-        <button type="submit" class="btn btn-success btn-block">登录</button>
     </div>
+</header>
 
+<#include "footerPage.ftl">
+<script>
+    //定时器id
+    var setIntervalId;
+    $(function () {
+        $("form").submit(function() {return false;});//关闭form提交
+        $('#submit').click(function () {
+            //停止之前的定时器
+            clearInterval(setIntervalId);
+            $('#loading').addClass('screen');
+            $('#loading').show();
+            $.post('../user/login?'+$('#login').serialize(),{},function (data) {
+                data = $.parseJSON(data);
+                console.log(data);
+                if(data.error){
+                    if(data.error == '用户名不存在'){
+                        $('.modal-body').html('用户名不存在！');
+                        loginnameHasError();
+                    }else{
+                        $('.modal-body').html('密码错误！');
+                        loginpssdHasError();
+                    }
+                    $('#model').trigger('click');
+                }else{
 
-<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                }
+                $('#loading').removeClass('screen');
+                $('#loading').hide();
+            });
+        });
+
+        //关闭定时器
+        $('#loginname').focus(function () {
+            if($('#loginname').parent().hasClass('has-error')){
+                timeout = false;
+                console.log(123);
+            }
+        });
+
+        //关闭定时器
+        $('#loginpssd').focus(function () {
+            if($('#loginpssd').parent().hasClass('has-error')){
+                timeout = false;
+                console.log(456);
+            }
+        });
+    });
+    //用户名框判断
+    function loginnameHasError() {
+        setIntervalId = setInterval(function () {
+            if($('#loginname').parent().hasClass('has-error')){
+                $('#loginname').parent().removeClass('has-error');
+            }else{
+                $('#loginname').parent().addClass('has-error');
+            }
+        },500);
+    }
+
+    //密码框判断
+    function loginpssdHasError() {
+        setIntervalId = setInterval(function () {
+            if($('#loginpssd').parent().hasClass('has-error')){
+                $('#loginpssd').parent().removeClass('has-error');
+            }else{
+                $('#loginpssd').parent().addClass('has-error');
+            }
+        },500);
+    }
+</script>
 </body>
 </html>

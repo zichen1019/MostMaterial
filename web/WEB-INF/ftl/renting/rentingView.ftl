@@ -65,7 +65,7 @@
                 var html = '';
                 for(var i=0;i<data.length;i++){
                     html += '<div class="col-12 col-sm-6 col-md-3">\n' +
-                            '                        <center class="commodity" onclick="javascript:location.href=\'detailed_information?annalid='+data[i].annalid+'\'">\n' +
+                            '                        <center class="commodity" onclick="javascript:location.href=\'../renting/information?viewname=detailed_information&annalid='+data[i].annalid+'\'">\n' +
                             '                            <img width="100" height="100" src="'+data[i].photo+'">\n' +
                             '                            <p>'+data[i].title+'</p>\n' +
                             '                            <p>'+data[i].price+'</p>\n' +

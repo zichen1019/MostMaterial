@@ -2,7 +2,7 @@ package com.zichen.bootstrap.base;
 
 import java.util.Date;
 
-public class View extends base {
+public class View extends Base {
     private String id;
 
     private Date createdate;

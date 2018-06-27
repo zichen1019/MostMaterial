@@ -2,8 +2,8 @@ package com.zichen.bootstrap.base;
 
 import java.util.Date;
 
-public class User extends base {
-    private String id;
+public class User extends Base {
+    private String annalid;
 
     private Date createdate;
 
@@ -29,12 +29,14 @@ public class User extends base {
 
     private String profile;
 
-    public String getId() {
-        return id;
+    private String headPortrait;
+
+    public String getAnnalid() {
+        return annalid;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setAnnalid(String annalid) {
+        this.annalid = annalid == null ? null : annalid.trim();
     }
 
     public Date getCreatedate() {
@@ -131,5 +133,13 @@ public class User extends base {
 
     public void setProfile(String profile) {
         this.profile = profile == null ? null : profile.trim();
+    }
+
+    public String getHeadPortrait() {
+        return headPortrait;
+    }
+
+    public void setHeadPortrait(String headPortrait) {
+        this.headPortrait = headPortrait == null ? null : headPortrait.trim();
     }
 }

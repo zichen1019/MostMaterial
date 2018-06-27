@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zichen.bootstrap.mapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.zichen.bootstrap.base.Role" >
+    <id column="annalid" property="annalid" jdbcType="VARCHAR" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_path" property="rolePath" jdbcType="VARCHAR" />
+    <result column="role_img" property="roleImg" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentid" jdbcType="VARCHAR" />
+    <result column="role_type" property="roleType" jdbcType="VARCHAR" />
+    <result column="role_code" property="roleCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    annalid, role_name, role_path, role_img, parentId, role_type, role_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from role
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zichen.bootstrap.base.Role" >
+    <selectKey keyColumn="annalid" keyProperty="annalid" >
+      select replace(uuid(),'-','') from dual
+    </selectKey>
+    insert into role (annalid, role_name, role_path, 
+      role_img, parentId, role_type, 
+      role_code)
+    values (#{annalid,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{rolePath,jdbcType=VARCHAR}, 
+      #{roleImg,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, #{roleType,jdbcType=VARCHAR}, 
+      #{roleCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zichen.bootstrap.base.Role" >
+    <selectKey keyColumn="annalid" keyProperty="annalid" >
+      select replace(uuid(),'-','') from dual
+    </selectKey>
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="annalid != null" >
+        annalid,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="rolePath != null" >
+        role_path,
+      </if>
+      <if test="roleImg != null" >
+        role_img,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="roleType != null" >
+        role_type,
+      </if>
+      <if test="roleCode != null" >
+        role_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="annalid != null" >
+        #{annalid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="rolePath != null" >
+        #{rolePath,jdbcType=VARCHAR},
+      </if>
+      <if test="roleImg != null" >
+        #{roleImg,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCode != null" >
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zichen.bootstrap.base.Role" >
+    update role
+    <set >
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="rolePath != null" >
+        role_path = #{rolePath,jdbcType=VARCHAR},
+      </if>
+      <if test="roleImg != null" >
+        role_img = #{roleImg,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        role_type = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCode != null" >
+        role_code = #{roleCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zichen.bootstrap.base.Role" >
+    update role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_path = #{rolePath,jdbcType=VARCHAR},
+      role_img = #{roleImg,jdbcType=VARCHAR},
+      parentId = #{parentid,jdbcType=VARCHAR},
+      role_type = #{roleType,jdbcType=VARCHAR},
+      role_code = #{roleCode,jdbcType=VARCHAR}
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </update>
+</mapper>

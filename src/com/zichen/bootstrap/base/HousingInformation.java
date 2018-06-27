@@ -2,7 +2,7 @@ package com.zichen.bootstrap.base;
 
 import java.util.Date;
 
-public class HousingInformation extends base {
+public class HousingInformation extends Base {
     private String annalid;
 
     private Date createdate;
@@ -11,7 +11,7 @@ public class HousingInformation extends base {
 
     private String title;
 
-    private int price;
+    private Integer price;
 
     private String publisher;
 
@@ -22,6 +22,8 @@ public class HousingInformation extends base {
     private String detailedInformation;
 
     private Boolean leasedState;
+
+    private String dicdataid;
 
     public String getAnnalid() {
         return annalid;
@@ -55,11 +57,11 @@ public class HousingInformation extends base {
         this.title = title == null ? null : title.trim();
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -76,7 +78,7 @@ public class HousingInformation extends base {
     }
 
     public void setPublisherContact(String publisherContact) {
-        this.publisherContact = publisherContact;
+        this.publisherContact = publisherContact == null ? null : publisherContact.trim();
     }
 
     public String getPhoto() {
@@ -101,5 +103,13 @@ public class HousingInformation extends base {
 
     public void setLeasedState(Boolean leasedState) {
         this.leasedState = leasedState;
+    }
+
+    public String getDicdataid() {
+        return dicdataid;
+    }
+
+    public void setDicdataid(String dicdataid) {
+        this.dicdataid = dicdataid == null ? null : dicdataid.trim();
     }
 }

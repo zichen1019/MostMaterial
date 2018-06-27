@@ -18,11 +18,13 @@
                     <img src="../AdminLTE3-2/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <#if 1 lte 0>
-                        <a href="login" class="d-block">A small world</a>
-                     <#elseif 2 gte 1>
-                        <a href="personalView" class="d-block">A small world</a>
+                    <#if user??>
+                        <a href="login" class="d-block">
+                     <#else >
+                        <a href="../user/personalView" class="d-block">
                     </#if>
+                        A small world
+                    </a>
                 </div>
             </div>
 

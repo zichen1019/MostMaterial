@@ -12,17 +12,19 @@
     <result column="photo" property="photo" jdbcType="VARCHAR" />
     <result column="detailed_information" property="detailedInformation" jdbcType="VARCHAR" />
     <result column="leased_state" property="leasedState" jdbcType="BIT" />
+    <result column="dicdataId" property="dicdataid" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.zichen.bootstrap.base.HousingInformationWithBLOBs" extends="BaseResultMap" >
     <result column="visitors" property="visitors" jdbcType="LONGVARCHAR" />
-    <result column="like" property="like" jdbcType="LONGVARCHAR" />
+    <result column="likes_people" property="likesPeople" jdbcType="LONGVARCHAR" />
     <result column="comment" property="comment" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    annalid, createDate, modifyDate, title, price, publisher, publisher_contact, photo, detailed_information, leased_state
+    annalid, createDate, modifyDate, title, price, publisher, publisher_contact, photo, 
+    detailed_information, leased_state, dicdataId
   </sql>
   <sql id="Blob_Column_List" >
-    visitors, like, comment
+    visitors, likes_people, comment
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
@@ -37,16 +39,24 @@
     where annalid = #{annalid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.zichen.bootstrap.base.HousingInformationWithBLOBs" >
+    <selectKey keyColumn="annalid" keyProperty="annalid" >
+      select replace(uuid(),'-','') from dual
+    </selectKey>
     insert into housing_information (annalid, createDate, modifyDate, 
-      title, price, publisher, photo, publisher_contact,
-      detailed_information, leased_state, visitors, 
-      like, comment)
+      title, price, publisher, 
+      publisher_contact, photo, detailed_information, 
+      leased_state, dicdataId, visitors, 
+      likes_people, comment)
     values (#{annalid,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
-      #{title,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, #{publisher,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{publisherContact,jdbcType=VARCHAR},
-      #{detailedInformation,jdbcType=VARCHAR}, #{leasedState,jdbcType=BIT}, #{visitors,jdbcType=LONGVARCHAR}, 
-      #{like,jdbcType=LONGVARCHAR}, #{comment,jdbcType=LONGVARCHAR})
+      #{title,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, #{publisher,jdbcType=VARCHAR}, 
+      #{publisherContact,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{detailedInformation,jdbcType=VARCHAR}, 
+      #{leasedState,jdbcType=BIT}, #{dicdataid,jdbcType=VARCHAR}, #{visitors,jdbcType=LONGVARCHAR}, 
+      #{likesPeople,jdbcType=LONGVARCHAR}, #{comment,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zichen.bootstrap.base.HousingInformationWithBLOBs" >
+    <selectKey keyColumn="annalid" keyProperty="annalid" >
+      select replace(uuid(),'-','') from dual
+    </selectKey>
     insert into housing_information
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="annalid != null" >
@@ -61,13 +71,13 @@
       <if test="title != null" >
         title,
       </if>
-      <if test="price != null">
+      <if test="price != null" >
         price,
       </if>
       <if test="publisher != null" >
         publisher,
       </if>
-      <if test="publisherContact != null">
+      <if test="publisherContact != null" >
         publisher_contact,
       </if>
       <if test="photo != null" >
@@ -79,11 +89,14 @@
       <if test="leasedState != null" >
         leased_state,
       </if>
+      <if test="dicdataid != null" >
+        dicdataId,
+      </if>
       <if test="visitors != null" >
         visitors,
       </if>
-      <if test="like != null" >
-        like,
+      <if test="likesPeople != null" >
+        likes_people,
       </if>
       <if test="comment != null" >
         comment,
@@ -102,14 +115,14 @@
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="price != null">
+      <if test="price != null" >
         #{price,jdbcType=INTEGER},
       </if>
       <if test="publisher != null" >
         #{publisher,jdbcType=VARCHAR},
       </if>
       <if test="publisherContact != null" >
-        #{publisher_contact,jdbcType=VARCHAR},
+        #{publisherContact,jdbcType=VARCHAR},
       </if>
       <if test="photo != null" >
         #{photo,jdbcType=VARCHAR},
@@ -120,11 +133,14 @@
       <if test="leasedState != null" >
         #{leasedState,jdbcType=BIT},
       </if>
+      <if test="dicdataid != null" >
+        #{dicdataid,jdbcType=VARCHAR},
+      </if>
       <if test="visitors != null" >
         #{visitors,jdbcType=LONGVARCHAR},
       </if>
-      <if test="like != null" >
-        #{like,jdbcType=LONGVARCHAR},
+      <if test="likesPeople != null" >
+        #{likesPeople,jdbcType=LONGVARCHAR},
       </if>
       <if test="comment != null" >
         #{comment,jdbcType=LONGVARCHAR},
@@ -143,7 +159,7 @@
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="price != null">
+      <if test="price != null" >
         price = #{price,jdbcType=INTEGER},
       </if>
       <if test="publisher != null" >
@@ -161,11 +177,14 @@
       <if test="leasedState != null" >
         leased_state = #{leasedState,jdbcType=BIT},
       </if>
+      <if test="dicdataid != null" >
+        dicdataId = #{dicdataid,jdbcType=VARCHAR},
+      </if>
       <if test="visitors != null" >
         visitors = #{visitors,jdbcType=LONGVARCHAR},
       </if>
-      <if test="like != null" >
-        like = #{like,jdbcType=LONGVARCHAR},
+      <if test="likesPeople != null" >
+        likes_people = #{likesPeople,jdbcType=LONGVARCHAR},
       </if>
       <if test="comment != null" >
         comment = #{comment,jdbcType=LONGVARCHAR},
@@ -184,8 +203,9 @@
       photo = #{photo,jdbcType=VARCHAR},
       detailed_information = #{detailedInformation,jdbcType=VARCHAR},
       leased_state = #{leasedState,jdbcType=BIT},
+      dicdataId = #{dicdataid,jdbcType=VARCHAR},
       visitors = #{visitors,jdbcType=LONGVARCHAR},
-      like = #{like,jdbcType=LONGVARCHAR},
+      likes_people = #{likesPeople,jdbcType=LONGVARCHAR},
       comment = #{comment,jdbcType=LONGVARCHAR}
     where annalid = #{annalid,jdbcType=VARCHAR}
   </update>
@@ -199,14 +219,17 @@
       publisher_contact = #{publisherContact,jdbcType=VARCHAR},
       photo = #{photo,jdbcType=VARCHAR},
       detailed_information = #{detailedInformation,jdbcType=VARCHAR},
-      leased_state = #{leasedState,jdbcType=BIT}
+      leased_state = #{leasedState,jdbcType=BIT},
+      dicdataId = #{dicdataid,jdbcType=VARCHAR}
     where annalid = #{annalid,jdbcType=VARCHAR}
   </update>
 
-  <select id="getList" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
+  <select id="getList" parameterType="com.zichen.bootstrap.base.HousingInformation" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from housing_information
+    order by ${order} ${sort}
     limit ${start},${end}
   </select>
 </mapper>
