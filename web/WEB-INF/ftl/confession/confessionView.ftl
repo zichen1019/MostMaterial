@@ -11,7 +11,7 @@
         }
     </style>
 
-    <link href="../confession/css/default.css" type="text/css" rel="stylesheet">
+    <link href="/${base}/confession/css/default.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="../confession/js/jquery.js"></script>
     <script type="text/javascript" src="../confession/js/garden.js"></script>
     <script type="text/javascript" src="../confession/js/functions.js"></script>

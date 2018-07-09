@@ -1,8 +1,10 @@
 package com.zichen.bootstrap.controller;
 
 import com.zichen.bootstrap.base.HousingInformation;
+import com.zichen.bootstrap.base.User;
 import com.zichen.bootstrap.base.View;
 import com.zichen.bootstrap.service.RentingService;
+import com.zichen.bootstrap.service.UserService;
 import com.zichen.bootstrap.service.ViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ public class RentingController extends BaseController {
     private RentingService rentingService;
     @Autowired
     private ViewService viewService;
+    @Autowired
+    private UserService userService;
 
     /**
      * 查询租房信息
@@ -46,10 +50,14 @@ public class RentingController extends BaseController {
     @ResponseBody
     public ModelAndView getInfomation(HttpServletRequest request, String viewname, String annalid){
         session =  getSession(request);
-        HousingInformation housingInformation = rentingService.selectByPrimaryKey(annalid);
         View view = viewService.selectByViewName(viewname);
-
-        return new ModelAndView(view.getViewpath()).addObject("housingInformation",housingInformation);
+        HousingInformation housingInformation = rentingService.selectByPrimaryKey(annalid);
+        //获取发布人信息
+        User publisher =  userService.selectByPrimaryKey(housingInformation.getPublisher());
+        getResultModel(request,view.getViewpath()).addObject("housingInformation",housingInformation)
+                .addObject("user",getUser(request))
+                .addObject("publisher",publisher);
+        return RESULT_MODEL;
     }
 
 }

@@ -12,9 +12,9 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../AdminLTE3-2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/${base}/AdminLTE3-2/dist/css/adminlte.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="../AdminLTE3-2/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="/${base}/AdminLTE3-2/plugins/iCheck/square/blue.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -107,7 +107,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">
-                    知道了
+                    确定
                 </button>
             </div>
         </div><!-- /.modal-content -->
@@ -147,10 +147,11 @@
                         $('.modal-body').html('密码错误！');
                         loginpssdHasError();
                     }
-                    $('#model').trigger('click');
                 }else{
-
+                    $('.modal-body').html('登录成功！');
+                    location.href="/${base}/view/index";
                 }
+                $('#model').trigger('click');
                 $('#loading').removeClass('screen');
                 $('#loading').hide();
             });

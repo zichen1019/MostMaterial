@@ -42,9 +42,9 @@ public class UserController extends BaseController{
         }else if(!(user.getLoginpssd().equals(u.getLoginpssd()))){
             map.put(ERROR,"密码错误");
         }else{
-            map.put(SUCCESS,"");
+            map.put(SUCCESS,"success");
             session = getSession(request);
-            session.setAttribute("userId",user.getAnnalid());
+            session.setAttribute("userId",u.getAnnalid());
             System.out.println("session写入----------"+u.getName()+":登陆成功---------------------------------------------------");
         }
         return map;

@@ -1,7 +1,7 @@
 package com.zichen.bootstrap.controller;
 
-import com.zichen.bootstrap.base.User;
 import com.zichen.bootstrap.base.View;
+import com.zichen.bootstrap.service.UserService;
 import com.zichen.bootstrap.service.ViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,10 +25,12 @@ import java.io.InputStream;
  * @author 紫宸
  */
 @Controller
-public class CoreController {
+public class CoreController extends BaseController{
 
 	@Autowired
 	private ViewService viewService;
+	@Autowired
+    private UserService userService;
 
 	@RequestMapping("/getS")
 	public String getS(){
@@ -56,10 +59,10 @@ public class CoreController {
 	 * @return 页面
 	 */
 	@RequestMapping("/view/{viewName}")
-	public ModelAndView view(@PathVariable("viewName") String viewName){
+	public ModelAndView view(@PathVariable("viewName") String viewName, HttpServletRequest request){
 		View view = viewService.selectByViewName(viewName);
-		User user = new User();
-		return new ModelAndView(view.getViewpath()).addObject("user",user);
+		getResultModel(request,view.getViewpath());
+		return RESULT_MODEL;
 	}
 
 
