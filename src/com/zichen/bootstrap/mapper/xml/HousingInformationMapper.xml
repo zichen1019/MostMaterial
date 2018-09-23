@@ -17,14 +17,13 @@
   <resultMap id="ResultMapWithBLOBs" type="com.zichen.bootstrap.base.HousingInformationWithBLOBs" extends="BaseResultMap" >
     <result column="visitors" property="visitors" jdbcType="LONGVARCHAR" />
     <result column="likes_people" property="likesPeople" jdbcType="LONGVARCHAR" />
-    <result column="comment" property="comment" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     annalid, createDate, modifyDate, title, price, publisher, publisher_contact, photo, 
     detailed_information, leased_state, dicdataId
   </sql>
   <sql id="Blob_Column_List" >
-    visitors, likes_people, comment
+    visitors, likes_people
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
@@ -46,12 +45,12 @@
       title, price, publisher, 
       publisher_contact, photo, detailed_information, 
       leased_state, dicdataId, visitors, 
-      likes_people, comment)
+      likes_people)
     values (#{annalid,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
       #{title,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, #{publisher,jdbcType=VARCHAR}, 
       #{publisherContact,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{detailedInformation,jdbcType=VARCHAR}, 
       #{leasedState,jdbcType=BIT}, #{dicdataid,jdbcType=VARCHAR}, #{visitors,jdbcType=LONGVARCHAR}, 
-      #{likesPeople,jdbcType=LONGVARCHAR}, #{comment,jdbcType=LONGVARCHAR})
+      #{likesPeople,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zichen.bootstrap.base.HousingInformationWithBLOBs" >
     <selectKey keyColumn="annalid" keyProperty="annalid" >
@@ -98,9 +97,6 @@
       <if test="likesPeople != null" >
         likes_people,
       </if>
-      <if test="comment != null" >
-        comment,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="annalid != null" >
@@ -141,9 +137,6 @@
       </if>
       <if test="likesPeople != null" >
         #{likesPeople,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="comment != null" >
-        #{comment,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -186,9 +179,6 @@
       <if test="likesPeople != null" >
         likes_people = #{likesPeople,jdbcType=LONGVARCHAR},
       </if>
-      <if test="comment != null" >
-        comment = #{comment,jdbcType=LONGVARCHAR},
-      </if>
     </set>
     where annalid = #{annalid,jdbcType=VARCHAR}
   </update>
@@ -205,8 +195,7 @@
       leased_state = #{leasedState,jdbcType=BIT},
       dicdataId = #{dicdataid,jdbcType=VARCHAR},
       visitors = #{visitors,jdbcType=LONGVARCHAR},
-      likes_people = #{likesPeople,jdbcType=LONGVARCHAR},
-      comment = #{comment,jdbcType=LONGVARCHAR}
+      likes_people = #{likesPeople,jdbcType=LONGVARCHAR}
     where annalid = #{annalid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zichen.bootstrap.base.HousingInformation" >

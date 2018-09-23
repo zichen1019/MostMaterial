@@ -5,3 +5,20 @@
     box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
     border-radius: .25rem;
 }
+
+/**
+ *  评论区的容器：comment-container
+ *  上传图片的图标：comment-upimg
+ *  发送按钮：comment-send
+ */
+.comment-container {
+    position: relative;
+}
+.comment-upimg {
+    position: absolute;
+    right:10px;
+    top:5px;
+}
+.comment-send {
+    margin-top: 10px;
+}

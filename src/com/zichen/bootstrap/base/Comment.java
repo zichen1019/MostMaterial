@@ -2,16 +2,22 @@ package com.zichen.bootstrap.base;
 
 import java.util.Date;
 
-public class Comment extends Base {
+public class Comment {
     private String annalid;
 
     private Date createtime;
 
-    private String author;
+    private String authorid;
 
-    private String commentOn;
+    private String remark;
 
     private String parentid;
+
+    private String housingid;
+
+    private String respondentid;
+
+    private User user;
 
     public String getAnnalid() {
         return annalid;
@@ -29,20 +35,20 @@ public class Comment extends Base {
         this.createtime = createtime;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getAuthorid() {
+        return authorid;
     }
 
-    public void setAuthor(String author) {
-        this.author = author == null ? null : author.trim();
+    public void setAuthorid(String authorid) {
+        this.authorid = authorid == null ? null : authorid.trim();
     }
 
-    public String getCommentOn() {
-        return commentOn;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setCommentOn(String commentOn) {
-        this.commentOn = commentOn == null ? null : commentOn.trim();
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 
     public String getParentid() {
@@ -51,5 +57,29 @@ public class Comment extends Base {
 
     public void setParentid(String parentid) {
         this.parentid = parentid == null ? null : parentid.trim();
+    }
+
+    public String getHousingid() {
+        return housingid;
+    }
+
+    public void setHousingid(String housingid) {
+        this.housingid = housingid == null ? null : housingid.trim();
+    }
+
+    public String getRespondentid() {
+        return respondentid;
+    }
+
+    public void setRespondentid(String respondentid) {
+        this.respondentid = respondentid == null ? null : respondentid.trim();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

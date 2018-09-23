@@ -67,7 +67,7 @@ $main-footer-padding: 15px !default;
 $main-footer-border-top-width: 1px !default;
 $main-footer-border-top-color: $gray-300 !default;
 $main-footer-border-top: $main-footer-border-top-width solid $main-footer-border-top-color !default;
-$main-footer-height: 30px; //(($font-size-root * $line-height-base) + ($main-footer-padding * 2)) + $main-footer-border-top-width !default;
+$main-footer-height: 30px; //(($font-size-root * $line-height-Base) + ($main-footer-padding * 2)) + $main-footer-border-top-width !default;
 $main-footer-bg: $white;
 
 // SIDEBAR SKINS

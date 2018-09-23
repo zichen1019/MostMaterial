@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
     <title>渺小的世界 | A small world</title>
 
-
+    <#include "css.ftl">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 <#include "leftPage.ftl">
+<#include "header.ftl">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -24,8 +21,8 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">渺小的世界</a></li>
-                            <li class="breadcrumb-item active">A small world</li>
+                            <li class="breadcrumb-item"><a href="#">A small world</a></li>
+                            <li class="breadcrumb-item active">渺小的世界</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -39,7 +36,7 @@
                 <div class="row">
 
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box" onclick="javascript:location.href='rentingView'">
+                        <div class="info-box" onclick="javascript:location.href='/${base}/view/rentingView'">
                             <span class="info-box-icon bg-info elevation-1"><i class="fa fa-home"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">租房</span>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zichen.bootstrap.mapper.CommentMapper" >
+<resultMap id="BaseResultMap" type="com.zichen.bootstrap.base.Comment" >
+  <id column="annalid" property="annalid" jdbcType="VARCHAR" />
+  <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+  <result column="authorId" property="authorid" jdbcType="VARCHAR" />
+  <result column="remark" property="remark" jdbcType="VARCHAR" />
+  <result column="parentId" property="parentid" jdbcType="VARCHAR" />
+  <result column="housingId" property="housingid" jdbcType="VARCHAR" />
+  <result column="respondentId" property="respondentid" jdbcType="VARCHAR" />
+  <association property="user" column="author" javaType="com.zichen.bootstrap.base.User">
+    <id column="annalid" property="annalid" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="modifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="loginName" property="loginname" jdbcType="VARCHAR" />
+    <result column="loginPssd" property="loginpssd" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="phoneNumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="WeChat" property="wechat" jdbcType="VARCHAR" />
+    <result column="preferences" property="preferences" jdbcType="VARCHAR" />
+    <result column="profile" property="profile" jdbcType="VARCHAR" />
+    <result column="head_portrait" property="headPortrait" jdbcType="VARCHAR" />
+  </association>
+</resultMap>
+<sql id="Base_Column_List" >
+    annalid, createtime, authorId, remark, parentId, housingId, respondentId
+  </sql>
+<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  select
+  <include refid="Base_Column_List" />
+  from comment
+  where annalid = #{annalid,jdbcType=VARCHAR}
+</select>
+<delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from comment
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </delete>
+<insert id="insert" parameterType="com.zichen.bootstrap.base.Comment" >
+  <selectKey keyColumn="annalid" keyProperty="annalid" >
+    select max(CONVERT(annalid,SIGNED))+1 from comment
+  </selectKey>
+    insert into comment (annalid, createtime, authorId,
+      remark, parentId, housingId,
+      respondentId)
+    values (#{annalid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{authorid,jdbcType=VARCHAR},
+      #{remark,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, #{housingid,jdbcType=VARCHAR},
+      #{respondentid,jdbcType=VARCHAR})
+  </insert>
+<insert id="insertSelective" parameterType="com.zichen.bootstrap.base.Comment" >
+  <selectKey keyColumn="annalid" keyProperty="annalid" >
+    select max(CONVERT(annalid,SIGNED))+1 from comment
+  </selectKey>
+  insert into comment
+  <trim prefix="(" suffix=")" suffixOverrides="," >
+    <if test="annalid != null" >
+      annalid,
+    </if>
+    <if test="createtime != null" >
+      createtime,
+    </if>
+    <if test="authorid != null" >
+      authorId,
+    </if>
+    <if test="remark != null" >
+      remark,
+    </if>
+    <if test="parentid != null" >
+      parentId,
+    </if>
+    <if test="housingid != null" >
+      housingId,
+    </if>
+    <if test="respondentid != null" >
+      respondentId,
+    </if>
+  </trim>
+  <trim prefix="values (" suffix=")" suffixOverrides="," >
+    <if test="annalid != null" >
+      #{annalid,jdbcType=VARCHAR},
+    </if>
+    <if test="createtime != null" >
+      #{createtime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="authorid != null" >
+      #{authorid,jdbcType=VARCHAR},
+    </if>
+    <if test="remark != null" >
+      #{remark,jdbcType=VARCHAR},
+    </if>
+    <if test="parentid != null" >
+      #{parentid,jdbcType=VARCHAR},
+    </if>
+    <if test="housingid != null" >
+      #{housingid,jdbcType=VARCHAR},
+    </if>
+    <if test="respondentid != null" >
+      #{respondentid,jdbcType=VARCHAR},
+    </if>
+  </trim>
+</insert>
+<update id="updateByPrimaryKeySelective" parameterType="com.zichen.bootstrap.base.Comment" >
+  update comment
+  <set >
+    <if test="createtime != null" >
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="authorid != null" >
+      authorId = #{authorid,jdbcType=VARCHAR},
+    </if>
+    <if test="remark != null" >
+      remark = #{remark,jdbcType=VARCHAR},
+    </if>
+    <if test="parentid != null" >
+      parentId = #{parentid,jdbcType=VARCHAR},
+    </if>
+    <if test="housingid != null" >
+      housingId = #{housingid,jdbcType=VARCHAR},
+    </if>
+    <if test="respondentid != null" >
+      respondentId = #{respondentid,jdbcType=VARCHAR},
+    </if>
+  </set>
+  where annalid = #{annalid,jdbcType=VARCHAR}
+</update>
+<update id="updateByPrimaryKey" parameterType="com.zichen.bootstrap.base.Comment" >
+    update comment
+    set createtime = #{createtime,jdbcType=TIMESTAMP},
+      authorId = #{authorid,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      parentId = #{parentid,jdbcType=VARCHAR},
+      housingId = #{housingid,jdbcType=VARCHAR},
+      respondentId = #{respondentid,jdbcType=VARCHAR}
+    where annalid = #{annalid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectParentByHousingID" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from comment
+    where housingId = #{housingId,jdbcType=VARCHAR} and parentId is null
+  </select>
+  <select id="selectByParentID" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from comment
+    where parentId = #{parentId,jdbcType=VARCHAR}
+  </select>
+</mapper>

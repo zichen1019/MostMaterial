@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zichen.bootstrap.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="com.zichen.bootstrap.base.User" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
+    <id column="annalid" property="annalid" jdbcType="VARCHAR" />
     <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
     <result column="modifyDate" property="modifydate" jdbcType="TIMESTAMP" />
     <result column="loginName" property="loginname" jdbcType="VARCHAR" />
@@ -15,38 +15,45 @@
     <result column="WeChat" property="wechat" jdbcType="VARCHAR" />
     <result column="preferences" property="preferences" jdbcType="VARCHAR" />
     <result column="profile" property="profile" jdbcType="VARCHAR" />
+    <result column="head_portrait" property="headPortrait" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, createDate, modifyDate, loginName, loginPssd, name, sex, birthday, phoneNumber, 
-    qq, WeChat, preferences, profile
+    annalid, createDate, modifyDate, loginName, loginPssd, name, sex, birthday, phoneNumber,
+    qq, WeChat, preferences, profile, head_portrait
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=VARCHAR}
+    where annalid = #{annalid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from user
-    where id = #{id,jdbcType=VARCHAR}
+    where annalid = #{annalid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.zichen.bootstrap.base.User" >
-    insert into user (id, createDate, modifyDate, 
+    <selectKey keyColumn="annalid" keyProperty="annalid" >
+      select replace(uuid(),'-','') from dual
+    </selectKey>
+    insert into user (annalid, createDate, modifyDate,
       loginName, loginPssd, name, 
       sex, birthday, phoneNumber, 
       qq, WeChat, preferences, 
-      profile)
-    values (#{id,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      profile, head_portrait)
+    values (#{annalid,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP},
       #{loginname,jdbcType=VARCHAR}, #{loginpssd,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
       #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{preferences,jdbcType=VARCHAR}, 
-      #{profile,jdbcType=VARCHAR})
+      #{profile,jdbcType=VARCHAR}, #{headPortrait,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zichen.bootstrap.base.User" >
+    <selectKey keyColumn="annalid" keyProperty="annalid" >
+      select replace(uuid(),'-','') from dual
+    </selectKey>
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
+      <if test="annalid != null" >
+        annalid,
       </if>
       <if test="createdate != null" >
         createDate,
@@ -83,6 +90,9 @@
       </if>
       <if test="profile != null" >
         profile,
+      </if>
+      <if test="headPortrait != null" >
+        head_portrait,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -125,6 +135,9 @@
       <if test="profile != null" >
         #{profile,jdbcType=VARCHAR},
       </if>
+      <if test="headPortrait != null" >
+        #{headPortrait,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.zichen.bootstrap.base.User" >
@@ -166,8 +179,11 @@
       <if test="profile != null" >
         profile = #{profile,jdbcType=VARCHAR},
       </if>
+      <if test="headPortrait != null" >
+        head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
+    where annalid  = #{annalid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zichen.bootstrap.base.User" >
     update user
@@ -182,7 +198,13 @@
       qq = #{qq,jdbcType=VARCHAR},
       WeChat = #{wechat,jdbcType=VARCHAR},
       preferences = #{preferences,jdbcType=VARCHAR},
-      profile = #{profile,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
+      profile = #{profile,jdbcType=VARCHAR},
+      head_portrait = #{headPortrait,jdbcType=VARCHAR}
+    where annalid = #{annalid,jdbcType=VARCHAR}
   </update>
+  <select id="checkUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from user
+    where loginname = #{loginname,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -25,6 +25,8 @@ public class HousingInformation extends Base {
 
     private String dicdataid;
 
+    private String comment;
+
     public String getAnnalid() {
         return annalid;
     }
@@ -111,5 +113,13 @@ public class HousingInformation extends Base {
 
     public void setDicdataid(String dicdataid) {
         this.dicdataid = dicdataid == null ? null : dicdataid.trim();
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

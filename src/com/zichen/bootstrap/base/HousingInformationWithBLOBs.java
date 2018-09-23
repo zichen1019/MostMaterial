@@ -5,7 +5,6 @@ public class HousingInformationWithBLOBs extends HousingInformation {
 
     private String likesPeople;
 
-    private String comment;
 
     public String getVisitors() {
         return visitors;
@@ -23,11 +22,4 @@ public class HousingInformationWithBLOBs extends HousingInformation {
         this.likesPeople = likesPeople == null ? null : likesPeople.trim();
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment == null ? null : comment.trim();
-    }
 }

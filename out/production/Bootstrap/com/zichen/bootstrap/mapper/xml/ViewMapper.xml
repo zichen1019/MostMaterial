@@ -22,12 +22,18 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.zichen.bootstrap.base.View" >
+    <selectKey keyColumn="annalid" keyProperty="annalid" >
+      select replace(uuid(),'-','') from dual
+    </selectKey>
     insert into view (id, createDate, modifyDate, 
       viewname, viewpath)
     values (#{id,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
       #{viewname,jdbcType=VARCHAR}, #{viewpath,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zichen.bootstrap.base.View" >
+    <selectKey keyColumn="annalid" keyProperty="annalid" >
+      select replace(uuid(),'-','') from dual
+    </selectKey>
     insert into view
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -90,11 +96,10 @@
       viewpath = #{viewpath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-
   <select id="selectByViewName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
     from view
-    where viewName = #{viewName,jdbcType=VARCHAR}
+    where viewname = #{viewname,jdbcType=VARCHAR}
   </select>
 </mapper>
